@@ -6,7 +6,7 @@ use Getopt::Long;
 use Pod::Usage;
 use lib(File::Spec->catdir($FindBin::Bin, File::Spec->updir, 'lib'));
 
-use Twitter::Shell;
+use Twitter::Shell::Lite;
 
 {
     my ($config, $version, $help);
@@ -35,7 +35,7 @@ use Twitter::Shell;
     if ($version) {
         print <<EOM;
 twittershell - Access Twitter From Your Command Line
-version: $Twitter::Shell::VERSION
+version: $Twitter::Shell::Lite::VERSION
 EOM
         exit 0;
     }
@@ -44,7 +44,7 @@ EOM
         pod2usage(-verbose => 2);
     }
 
-    Twitter::Shell->new($config)->run;
+    Twitter::Shell::Lite->new($config)->run;
 }
 
 __END__
@@ -85,10 +85,85 @@ Print out the version and exit
 
 Print out this help message and exit
 
+=head1 CONFIGURATION
+
+The configuration file must contain your username and password, all other 
+configuration settings are optional.
+
+=over 4
+
+=item * username
+
+Your username login to your twitter account
+
+=item * password
+
+Your password login to your twitter account
+
+=item * prompt
+
+The prompt you wish to see on the command line. This will default to 'twitter>'
+if not configured.
+
+=item * tag
+
+The tag you wish to have added to the end of an update/say command. This will 
+default to '[from twittershell]' if not configured. If you do not wish a tag to
+be added at all, set the tag to '.' in the configuration file.
+
+=item * order
+
+Describes the order for printing status messages when a timeline command is
+requested. Will default to 'descending' if not configured. Setting is case
+insensitive and should be set to 'ascending' or 'asc' to reverse the order.
+
+=item * limit
+
+Describes how many status messages should be printed when a timeline command is
+requested. Will default to the last 20 if not configured.
+
+=back
+
+=head1 COMMANDS
+
+=over 4
+
+=item * friends
+
+Displays the most recent status messages from each of your friends.
+
+=item * friends_timeline | ft
+
+Displays the most recent status messages within your friends timeline.
+
+=item * public_timeline | pt
+
+Displays the most recent status messages within the public timeline.
+
+=item * followers
+
+Displays the most recent status messages from each of your followers.
+
+=item * update | say
+
+Posts a new status message, of upto 140 characters in length.
+
+=item * exit | quit | q
+
+Exits the program.
+
+=item * help
+
+Provides help for a specific command, or provides a summary of the commands
+available if requested with no arguments.
+
+=back
+
+
 =head1 AUTHOR
 
-Gungho is Copyright (c) 2007 Daisuke Maki <daisuke@endeworks.jp> Endeworks Ltd.
-All rights reserved.
+twittershell is Copyright (c) 2007 Daisuke Maki <daisuke@endeworks.jp> 
+Endeworks Ltd. All rights reserved.
 
 =head1 LICENSE
 

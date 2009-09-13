@@ -1,14 +1,18 @@
 Changes
 =======
 
-- 0.03 Wed 09 May 2007
-  - Remove Twitter::Shell::Base
-  - Make Pod::Coverage happy
-
-- 0.02 Thu 12 Apr 2007
-  - Add brief summary to each command
-  - Add aliases to long commands: ft, pt
-  - Remove .swp files. ugh
-
-- 0.01 Thu 12 Apr 2007
-  - Released unto an unsuspecting world.
+- 0.01 2009-09-13
+  - forked from Twitter::Shell to use Net::Twitter::Lite
+  - changes by Barbie: (http://rt.cpan.org/Public/Bug/Display.html?id=42435)
+  - added configuration options for:
+    tag - string added to end of say message.
+    prompt - command line prompt string.
+    order - display message order for timeline commands.
+    limit - display only n messages for timeline commands.
+  - added documentation.
+  - added ability to specify limit for timeline commands on the command line.
+  - set STDOUT to binmode to ensure 'wide character' erroros are suppressed.
+  - added 'quit' and 'q' aliases to the 'exit' command.
+  - added text for help command line documentation.
+  - suppressed useless Config::Any warning message about setting a default!
+  - added tests.

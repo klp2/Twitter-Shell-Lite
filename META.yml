@@ -6,7 +6,7 @@ license: perl
 meta-spec: 
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
   version: 1.3
-name: Twitter-Shell
+name: Twitter-Shell-Lite
 no_index: 
   directory: 
     - inc
@@ -14,6 +14,6 @@ no_index:
 requires: 
   Class::Accessor::Fast: 0
   Config::Any: 0
-  Net::Twitter: 0
+  Net::Twitter::Lite: 0
   Term::Shell: 0
-version: 0.03
+version: 0.01
